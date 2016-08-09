@@ -219,7 +219,7 @@ class Amazon_Payments_Model_SimplePath
      */
     public function getListenerUrl()
     {
-        $url = Mage::getUrl('amazon_payments/simplepath', array('_store' => 1, '_forced_secure' => true));
+        $url = Mage::getUrl('amazon_payments/simplepath', array('_store' => Mage::helper('amazon_payments')->getAdminStoreId(), '_forced_secure' => true));
         // Add index.php
         $baseUrl = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB, true);
         return str_replace($baseUrl, $baseUrl . 'index.php/', $url);
@@ -275,7 +275,7 @@ class Amazon_Payments_Model_SimplePath
             //'spUrl'         => Mage::helper("adminhtml")->getUrl('adminhtml/amazon_simplepath/spurl'),
             'importUrl'     => Mage::helper('adminhtml')->getUrl('adminhtml/amazon_simplepath/import'),
             'isSecure'      => (int) (Mage::app()->getFrontController()->getRequest()->isSecure()),
-            'isUsa'         => (int) (Mage::helper('amazon_payments')->getAdminConfig('general/country/default') == 'US'),
+            'isUsa'         => (int) (Mage::helper('amazon_payments')->getAdminConfig('general/country/default') == 'US' && Mage::helper('amazon_payments')->getAdminRegion() != 'eu'),
             'hasOpenssl'    => (int) (extension_loaded('openssl')),
             'formParams'    => $this->getFormParams(),
         );
