@@ -1,5 +1,5 @@
 {
-    "name": "amzn/amazon-payments-magento-plugin",
+    "name": "bmartus/amazon-payments-magento-plugin",
     "type": "magento-module",
     "license": "Apache OSL-2",
     "homepage": "https://payments.amazon.com/sp/magento/resources",
